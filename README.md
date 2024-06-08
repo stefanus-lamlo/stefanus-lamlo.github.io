@@ -64,9 +64,11 @@ Kemudian dibuat trainer menggunakan library transformer dan menggunakan pretrain
 
 ## Eksperimen
 Eksperimen dilakukan dengan infrastruktur berupa:
+```
 - GPU Nvidia RTX A5000 16 GB RAM DDR5
 - CPU Intel Xeon Silver 4208 CPU @2.10GHz
 - RAM 128 GB DDR4
+```
 
 Menggunakan infrastruktur ini, untuk menyelesaikan 33 epoch dibutuhkan waktu selama 104 detik (1 menit 44 detik).
 
@@ -96,12 +98,14 @@ training_args = TrainingArguments(
 Didapatkan hasil dari testing data sebagai berikut:
 
 ### Confusion Matrix:
+```
 |       | Alto | Bass | Sopran | Tenor |
 |-------|------|------|--------|-------|
 | Alto  | 4    | 0    | 2      | 0     |
 | Bass  | 0    | 5    | 0      | 1     |
 | Sopran| 1    | 1    | 4      | 0     |
 | Tenor | 0    | 2    | 0      | 4     |
+```
 
 ### Classification Report:
 ```
@@ -116,7 +120,7 @@ weighted avg       0.72      0.71      0.71        24
 ```
 
 Berikut merupakan hasil inferensi antara true label dan predict label:
-
+```
 | Filename          | True Label | Predicted Label |
 |-------------------|------------|-----------------|
 | validation_0.wav  | tenor      | bass            |
@@ -143,7 +147,7 @@ Berikut merupakan hasil inferensi antara true label dan predict label:
 | validation_21.wav | bass       | bass            |
 | validation_22.wav | sopran     | sopran          |
 | validation_23.wav | sopran     | bass            |
-
+```
 Hasil yang didapatkan relatif baik mengingat keterbatasan data train maupun validation. Didapatkan akurasi di angka 71% yang mana cukup baik. Namun bila dilihat secara kualitatif, mayoritas kesalahan terjadi dengan tidak begitu jauh yakni tenor diidentifikasi sebagai bass dan sebaliknya maupun sopran diidentifikasi sebagai alto dan sebaliknya. Anomali hanya terjadi di validation_23 yang setelah dilakukan cherrypicking ternyata merupakan audio kosong. Hal ini menjelaskan bahwa secara kualitatif hasil yang didapatkan sudah cukup baik.
 
 IPYNB dan dataset yang dikerjakan dalam penelitian ini dapat diakses pada repositori GitHub: [stefanus-lamlo/IF5281](https://github.com/stefanus-lamlo/IF5281)
